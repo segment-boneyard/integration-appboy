@@ -1,7 +1,9 @@
 {
   "input": {
     "type": "track",
-    "timestamp": "2014",
+    "version": "2",
+    "userId": "some-uid",
+    "timestamp": "2015",
     "event": "played a song",
     "properties": {
       "song": "Frank AB",
@@ -12,8 +14,10 @@
     }
   },
   "output": {
+    "version": "2",
     "type": "track",
-    "timestamp": "2014-01-01T00:00:00.000Z",
+    "userId": "some-uid",
+    "timestamp": "2015-01-01T00:00:00.000Z",
     "event": "played a song",
     "properties": {
       "song": "Frank AB",

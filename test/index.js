@@ -1,26 +1,27 @@
 
 var Test = require('segmentio-integration-tester');
-var Sendwithus = require('../');
+var Appboy = require('../');
 var mapper = require('../lib/mapper');
 
-describe('Sendwithus', function(){
-  var sendwithus;
+describe('Appboy', function(){
+  var appboy;
   var settings;
   var test;
 
   beforeEach(function(){
-    settings = { apiKey: 'key_segment1234abcd', integrationId: 'sio_segment1234abcd' };
-    sendwithus = new Sendwithus(settings);
-    test = Test(sendwithus, __dirname);
+    settings = {
+      apiKey: ''
+    };
+    appboy = new Appboy(settings);
+    test = Test(appboy, __dirname);
     test.mapper(mapper);
   });
 
   it('should have the correct settings', function(){
     test
-      .name('Sendwithus')
+      .name('Appboy')
       .channels(['server'])
       .ensure('settings.apiKey')
-      .ensure('settings.integrationId')
       .retries(10);
   });
 
