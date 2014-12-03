@@ -1,0 +1,27 @@
+{
+  "name": "integration-sendwithus",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Sendwithus server-side integration",
+  "author": "Segment <friends@segment.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/segmentio/integration-sendwithus"
+  },
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "make test"
+  },
+  "dependencies": {
+    "segmentio-integration": "2.x"
+  },
+  "devDependencies": {
+    "istanbul": "0.x",
+    "jscs": "1.x",
+    "mocha": "2.x",
+    "ms": "0.x",
+    "segmentio-integration-tester": "1.x",
+    "should": "4.x",
+    "unix-time": "1.x"
+  }
+}
