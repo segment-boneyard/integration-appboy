@@ -9,7 +9,11 @@ describe('Sendwithus', function(){
   var test;
 
   beforeEach(function(){
-    settings = { apiKey: 'key_segment1234abcd', integrationId: 'sio_segment1234abcd' };
+    //settings = { apiKey: 'key_segment1234abcd', integrationId: 'sio_segment1234abcd' };
+    settings = {
+      apiKey: 'live_7252c5d59aa9c0ed65239cce083ea7e5f0505f0f',
+      //apiKey: 'test_514d7517342c583abf9b73a617a529897014411a',
+      integrationId: 'sio_MA2T2LtHDvsNDjDke7aC6Q' };
     sendwithus = new Sendwithus(settings);
     test = Test(sendwithus, __dirname);
     test.mapper(mapper);

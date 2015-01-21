@@ -1,12 +1,13 @@
 {
   "input": {
     "type": "identify",
-    "timestamp": "2014",
-    "userId": "user-id",
+    "version": "1",
+    "timestamp": "2015",
+    "userId": "abcd123",
     "traits": {
-      "firstName": "John",
+      "firstName": "Jane",
       "lastName": "Doe",
-      "email": "jd@example.com"
+      "email": "janedoe@example.com"
     },
     "context": {
       "ip": "10.0.0.1"
@@ -14,12 +15,13 @@
   },
   "output": {
     "type": "identify",
-    "timestamp": "2014-01-01T00:00:00.000Z",
-    "userId": "user-id",
+    "version": "1",
+    "timestamp": "2015-01-01T00:00:00.000Z",
+    "userId": "abcd123",
     "traits": {
-      "firstName": "John",
+      "firstName": "Jane",
       "lastName": "Doe",
-      "email": "jd@example.com"
+      "email": "janedoe@example.com"
     },
     "context": {
       "ip": "10.0.0.1"
