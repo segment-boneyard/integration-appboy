@@ -1,0 +1,30 @@
+{
+  "input": {
+    "type": "identify",
+    "version": "1",
+    "timestamp": "2015",
+    "userId": "abcd123",
+    "traits": {
+      "firstName": "Jane",
+      "lastName": "Doe",
+      "email": "janedoe@example.com"
+    },
+    "context": {
+      "ip": "10.0.0.1"
+    }
+  },
+  "output": {
+    "type": "identify",
+    "version": "1",
+    "timestamp": "2015-01-01T00:00:00.000Z",
+    "userId": "abcd123",
+    "traits": {
+      "firstName": "Jane",
+      "lastName": "Doe",
+      "email": "janedoe@example.com"
+    },
+    "context": {
+      "ip": "10.0.0.1"
+    }
+  }
+}
