@@ -1,6 +1,6 @@
-# Sendwithus server-side integration.
+# Appboy server-side integration.
 
-sendwithus server-side integration for Segment.
+appboy server-side integration for Segment.
 
 
 ## License
