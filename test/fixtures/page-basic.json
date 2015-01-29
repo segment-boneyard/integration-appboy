@@ -1,0 +1,25 @@
+{
+  "input": {
+    "type": "page",
+    "version": 1,
+    "userId": "page-user-id",
+    "name": "Home Page",
+    "category": "Docs",
+    "timestamp": "2015-01-01T00:00:00.000Z",
+    "properties": {
+      "clickCount": 3
+    }
+  },
+  "output": {
+    "app_group_id": "b1de6df9-0052-4f7a-87f5-a17273199311",
+    "events": [{
+      "external_id": "page-user-id",
+      "time": "2015-01-01T00:00:00.000Z",
+      "name": "Home Page",
+      "properties": {
+        "category": "Docs",
+        "clickCount": 3
+      }}
+    ]
+  }
+}

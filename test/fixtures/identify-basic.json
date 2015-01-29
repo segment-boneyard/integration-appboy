@@ -2,8 +2,8 @@
   "input": {
     "type": "identify",
     "version": "1",
-    "timestamp": "2015",
-    "userId": "abcd123",
+    "timestamp": "2015-01-01T00:00:00.000Z",
+    "userId": "identify-user-id",
     "traits": {
       "firstName": "Jane",
       "lastName": "Doe",
@@ -14,17 +14,12 @@
     }
   },
   "output": {
-    "type": "identify",
-    "version": "1",
-    "timestamp": "2015-01-01T00:00:00.000Z",
-    "userId": "abcd123",
-    "traits": {
-      "firstName": "Jane",
-      "lastName": "Doe",
+    "app_group_id": "b1de6df9-0052-4f7a-87f5-a17273199311",
+    "attributes": [{
+      "external_id": "identify-user-id",
+      "first_name": "Jane",
+      "last_name": "Doe",
       "email": "janedoe@example.com"
-    },
-    "context": {
-      "ip": "10.0.0.1"
-    }
+    }]
   }
 }

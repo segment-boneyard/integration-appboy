@@ -10,7 +10,7 @@ describe('Appboy', function(){
 
   beforeEach(function(){
     settings = {
-      apiKey: ''
+      appGroupId: 'b1de6df9-0052-4f7a-87f5-a17273199311'
     };
     appboy = new Appboy(settings);
     test = Test(appboy, __dirname);
@@ -20,15 +20,14 @@ describe('Appboy', function(){
   it('should have the correct settings', function(){
     test
       .name('Appboy')
-      .channels(['server'])
-      .ensure('settings.apiKey')
+      .channels(['server', 'client'])
+      .ensure('settings.appGroupId')
       .retries(10);
   });
 
   describe('.validate()', function(){
-    it('should not be valid without an api key', function(){
-      delete settings.apiKey;
-      delete settings.invalid;
+    it('should not be valid without an app group id', function(){
+      delete settings.appGroupId;
       test.invalid({}, settings);
     });
 
@@ -49,28 +48,38 @@ describe('Appboy', function(){
         test.maps('track-basic');
       });
     });
+
+    describe('page', function(){
+      it('should map basic page', function(){
+        test.maps('page-basic');
+      });
+    });
+
+    describe('group', function(){
+      it('should map basic group', function(){
+        test.maps('group-basic');
+      });
+    });
   });
 
   describe('.identify()', function(){
     it('should send basic identify', function(done){
       var json = test.fixture('identify-basic');
       var output = json.output;
-      output.timestamp = new Date(output.timestamp);
       test
         .identify(json.input)
         .sends(json.output)
-        .expects(200)
+        .expects(201)
         .end(done);
     });
 
     it('should not error on invalid key', function(done){
       var json = test.fixture('identify-basic');
       var output = json.output;
-      output.timestamp = new Date(output.timestamp);
       test
         .identify(json.input)
         .sends(json.output)
-        .expects(200)
+        .expects(201)
         .end(done);
     });
   });
@@ -79,23 +88,68 @@ describe('Appboy', function(){
     it('should send basic track', function(done){
       var json = test.fixture('track-basic');
       var output = json.output;
-      output.timestamp = new Date(output.timestamp);
+      output.events[0].time = new Date(output.events[0].time);
       test
         .track(json.input)
         .sends(json.output)
-        .expects(200)
+        .expects(201)
         .end(done);
     });
-
     it('should not error on invalid key', function(done){
       var json = test.fixture('track-basic');
       var output = json.output;
-      output.timestamp = new Date(output.timestamp);
+      output.events[0].time = new Date(output.events[0].time);
       test
         .track(json.input)
         .sends(json.output)
-        .expects(200)
+        .expects(201)
         .end(done);
+    });
+  });
+
+  describe('.page()', function(){
+    it('should send basic page', function(done){
+      var json = test.fixture('page-basic');
+      var output = json.output;
+      output.events[0].time = new Date(output.events[0].time);
+      test
+          .page(json.input)
+          .sends(json.output)
+          .expects(201)
+          .end(done);
+    });
+
+    it('should not error on invalid key', function(done){
+      var json = test.fixture('page-basic');
+      var output = json.output;
+      output.events[0].time = new Date(output.events[0].time);
+      test
+          .page(json.input)
+          .sends(json.output)
+          .expects(201)
+          .end(done);
+    });
+  });
+
+  describe('.group()', function(){
+    it('should send basic group', function(done){
+      var json = test.fixture('group-basic');
+      var output = json.output;
+      test
+          .group(json.input)
+          .sends(json.output)
+          .expects(201)
+          .end(done);
+    });
+
+    it('should not error on invalid key', function(done){
+      var json = test.fixture('group-basic');
+      var output = json.output;
+      test
+          .group(json.input)
+          .sends(json.output)
+          .expects(201)
+          .end(done);
     });
   });
 });
