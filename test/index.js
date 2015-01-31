@@ -2,6 +2,7 @@
 var Test = require('segmentio-integration-tester');
 var Appboy = require('../');
 var mapper = require('../lib/mapper');
+var facade = require('segmentio-facade');
 
 describe('Appboy', function(){
   var appboy;
@@ -10,7 +11,8 @@ describe('Appboy', function(){
 
   beforeEach(function(){
     settings = {
-      appGroupId: 'b1de6df9-0052-4f7a-87f5-a17273199311'
+      appGroupId: 'b1de6df9-0052-4f7a-87f5-a17273199311',
+      trackPages: true
     };
     appboy = new Appboy(settings);
     test = Test(appboy, __dirname);
@@ -22,17 +24,25 @@ describe('Appboy', function(){
       .name('Appboy')
       .channels(['server', 'client'])
       .ensure('settings.appGroupId')
-      .retries(10);
+      .retries(2);
   });
 
   describe('.validate()', function(){
     it('should not be valid without an app group id', function(){
       delete settings.appGroupId;
+      test.invalid({
+        userId: "user-id"
+      }, settings);
+    });
+
+    it('should not be valid without a user id', function(){
       test.invalid({}, settings);
     });
 
     it('should be valid with complete settings', function(){
-      test.valid({}, settings);
+      test.valid({
+        userId: "user-id"
+      }, settings);
     });
   });
 
@@ -41,11 +51,27 @@ describe('Appboy', function(){
       it('should map basic identify', function(){
         test.maps('identify-basic');
       });
+
+      it('should map birthday to dob in the correct format', function(){
+        test.maps('identify-dob');
+      });
+
+      it('should not send gender if it is not M or F', function(){
+        test.maps('identify-gender');
+      });
+
+      it('should preserve case of non-Appboy fields', function(){
+        test.maps('identify-custom');
+      });
     });
 
     describe('track', function(){
       it('should map basic track', function(){
         test.maps('track-basic');
+      });
+
+      it('should map complete order tracks with products', function(){
+        test.maps('track-products');
       });
     });
 
@@ -95,6 +121,19 @@ describe('Appboy', function(){
         .expects(201)
         .end(done);
     });
+
+    it('should send track products', function(done){
+      var json = test.fixture('track-products');
+      var output = json.output;
+      output.purchases[0].time = new Date(output.purchases[0].time);
+      output.purchases[1].time = new Date(output.purchases[1].time);
+      test
+        .track(json.input)
+        .sends(json.output)
+        .expects(201)
+        .end(done);
+    });
+
     it('should not error on invalid key', function(done){
       var json = test.fixture('track-basic');
       var output = json.output;
