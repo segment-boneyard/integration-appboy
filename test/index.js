@@ -27,7 +27,7 @@ describe('Appboy', function(){
       .ensure('settings.appGroupId')
       .retries(2);
   });
-
+//
   describe('.validate()', function(){
     it('should not be valid without an app group id', function(){
       delete settings.appGroupId;
@@ -80,6 +80,10 @@ describe('Appboy', function(){
         test.maps('track-products');
       });
 
+      it('should use default currency and quantity for products when they do not exist', function(){
+        test.maps('track-products-defaults');
+      });
+
       it('should set _update_existing_only to true if it is true in settings', function(){
         settings.updateExistingOnly = true;
         test.maps('track-update-existing-only');
@@ -100,16 +104,6 @@ describe('Appboy', function(){
 
   describe('.identify()', function(){
     it('should send basic identify', function(done){
-      var json = test.fixture('identify-basic');
-      var output = json.output;
-      test
-        .identify(json.input)
-        .sends(json.output)
-        .expects(201)
-        .end(done);
-    });
-
-    it('should not error on invalid key', function(done){
       var json = test.fixture('identify-basic');
       var output = json.output;
       test
@@ -144,15 +138,22 @@ describe('Appboy', function(){
         .end(done);
     });
 
-    it('should not error on invalid key', function(done){
-      var json = test.fixture('track-basic');
+    it('should return minor errors', function(done){
+      var json = test.fixture('track-products-minor-error');
       var output = json.output;
-      output.events[0].time = new Date(output.events[0].time);
+      output.purchases[0].time = new Date(output.purchases[0].time);
+      output.purchases[1].time = new Date(output.purchases[1].time);
       test
         .track(json.input)
         .sends(json.output)
         .expects(201)
-        .end(done);
+        .end(function(err, response){
+          if (err) return done(err);
+          // check the the response was successful but has the minor error of invalid price
+          response[0].body.message.should.equal("success");
+          response[0].body.errors[0].type.should.match(/price/);
+          done();
+        });
     });
   });
 
@@ -167,31 +168,10 @@ describe('Appboy', function(){
           .expects(201)
           .end(done);
     });
-
-    it('should not error on invalid key', function(done){
-      var json = test.fixture('page-basic');
-      var output = json.output;
-      output.events[0].time = new Date(output.events[0].time);
-      test
-          .page(json.input)
-          .sends(json.output)
-          .expects(201)
-          .end(done);
-    });
   });
 
   describe('.group()', function(){
     it('should send basic group', function(done){
-      var json = test.fixture('group-basic');
-      var output = json.output;
-      test
-          .group(json.input)
-          .sends(json.output)
-          .expects(201)
-          .end(done);
-    });
-
-    it('should not error on invalid key', function(done){
       var json = test.fixture('group-basic');
       var output = json.output;
       test
