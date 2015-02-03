@@ -12,7 +12,8 @@ describe('Appboy', function(){
   beforeEach(function(){
     settings = {
       appGroupId: 'b1de6df9-0052-4f7a-87f5-a17273199311',
-      trackPages: true
+      trackPages: true,
+      updateExistingOnly: false
     };
     appboy = new Appboy(settings);
     test = Test(appboy, __dirname);
@@ -60,8 +61,13 @@ describe('Appboy', function(){
         test.maps('identify-gender');
       });
 
-      it('should preserve case of non-Appboy fields', function(){
+      it('should preserve case of non-standard Appboy fields', function(){
         test.maps('identify-custom');
+      });
+
+      it('should set _update_existing_only to true if it is true in settings', function(){
+        settings.updateExistingOnly = true;
+        test.maps('identify-update-existing-only');
       });
     });
 
@@ -73,17 +79,21 @@ describe('Appboy', function(){
       it('should map complete order tracks with products', function(){
         test.maps('track-products');
       });
-    });
 
-    describe('page', function(){
-      it('should map basic page', function(){
-        test.maps('page-basic');
+      it('should set _update_existing_only to true if it is true in settings', function(){
+        settings.updateExistingOnly = true;
+        test.maps('track-update-existing-only');
       });
     });
 
     describe('group', function(){
       it('should map basic group', function(){
         test.maps('group-basic');
+      });
+
+      it('should set _update_existing_only to true if it is true in settings', function(){
+        settings.updateExistingOnly = true;
+        test.maps('group-update-existing-only');
       });
     });
   });

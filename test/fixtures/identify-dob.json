@@ -15,7 +15,8 @@
     "app_group_id": "b1de6df9-0052-4f7a-87f5-a17273199311",
     "attributes": [{
       "external_id": "identify-dob-user-id",
-      "dob": "1991-09-26"
+      "dob": "1991-09-26",
+      "_update_existing_only": false
     }]
   }
 }

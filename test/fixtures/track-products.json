@@ -39,7 +39,8 @@
         "time": "2015-01-01T00:00:00.000Z",
         "price": 19,
         "quantity": 1,
-        "currency": "USD"
+        "currency": "USD",
+        "_update_existing_only": false
       },
       {
         "external_id": "track-products-user-id",
@@ -47,7 +48,8 @@
         "time": "2015-01-01T00:00:00.000Z",
         "price": 3,
         "quantity": 2,
-        "currency": "USD"
+        "currency": "USD",
+        "_update_existing_only": false
       }
     ]
   }

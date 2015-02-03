@@ -2,7 +2,7 @@
   "input": {
     "type": "group",
     "version": 1,
-    "userId": "group-user-id",
+    "userId": "group-non-existing-user-id",
     "groupId": "abcd123",
     "traits": {
       "avatar": "segment.jpg",
@@ -13,9 +13,9 @@
   "output": {
     "app_group_id": "b1de6df9-0052-4f7a-87f5-a17273199311",
     "attributes": [{
-      "external_id": "group-user-id",
+      "external_id": "group-non-existing-user-id",
       "ab_segment_group_abcd123": true,
-      "_update_existing_only": false
+      "_update_existing_only": true
     }]
   }
 }
