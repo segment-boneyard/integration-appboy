@@ -23,6 +23,7 @@
       "CUSTOM_ATT_CAP": true,
       "custom-att-hypen": "F",
       "_update_existing_only": false
-    }]
+    }],
+    "src": "segment"
   }
 }

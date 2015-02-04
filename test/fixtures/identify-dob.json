@@ -17,6 +17,7 @@
       "external_id": "identify-dob-user-id",
       "dob": "1991-09-26",
       "_update_existing_only": false
-    }]
+    }],
+    "src": "segment"
   }
 }

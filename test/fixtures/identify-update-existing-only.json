@@ -23,6 +23,7 @@
       "email": "janedoe@example.com",
       "gender": "F",
       "_update_existing_only": true
-    }]
+    }],
+    "src": "segment"
   }
 }

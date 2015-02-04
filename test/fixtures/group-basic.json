@@ -16,6 +16,7 @@
       "external_id": "group-user-id",
       "ab_segment_group_abcd123": true,
       "_update_existing_only": false
-    }]
+    }],
+    "src": "segment"
   }
 }

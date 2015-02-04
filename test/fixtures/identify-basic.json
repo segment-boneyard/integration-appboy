@@ -8,7 +8,12 @@
       "firstName": "Jane",
       "lastName": "Doe",
       "email": "janedoe@example.com",
-      "gender": "F"
+      "gender": "F",
+      "avatar": "https://aws.com/1234",
+      "address": {
+        "country": "US",
+        "city": "New York"
+      }
     },
     "context": {
       "ip": "10.0.0.1"
@@ -22,7 +27,11 @@
       "last_name": "Doe",
       "email": "janedoe@example.com",
       "gender": "F",
+      "image_url": "https://aws.com/1234",
+      "home_city": "New York",
+      "country": "US",
       "_update_existing_only": false
-    }]
+    }],
+    "src": "segment"
   }
 }

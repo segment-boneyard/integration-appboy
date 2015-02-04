@@ -16,6 +16,7 @@
     "attributes": [{
       "external_id": "identify-gender-user-id",
       "_update_existing_only": false
-    }]
+    }],
+    "src": "segment"
   }
 }

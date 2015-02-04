@@ -51,6 +51,7 @@
         "currency": "USD",
         "_update_existing_only": false
       }
-    ]
+    ],
+    "src": "segment"
   }
 }

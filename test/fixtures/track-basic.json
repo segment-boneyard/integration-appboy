@@ -26,6 +26,7 @@
         },
         "_update_existing_only": false
       }
-    ]
+    ],
+    "src": "segment"
   }
 }
