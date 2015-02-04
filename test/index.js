@@ -23,8 +23,9 @@ describe('Appboy', function(){
   it('should have the correct settings', function(){
     test
       .name('Appboy')
-      .channels(['server', 'client'])
+      .channels(['server'])
       .ensure('settings.appGroupId')
+      .ensure('message.userId')
       .retries(2);
   });
 //
@@ -154,19 +155,6 @@ describe('Appboy', function(){
           response[0].body.errors[0].type.should.match(/price/);
           done();
         });
-    });
-  });
-
-  describe('.page()', function(){
-    it('should send basic page', function(done){
-      var json = test.fixture('page-basic');
-      var output = json.output;
-      output.events[0].time = new Date(output.events[0].time);
-      test
-          .page(json.input)
-          .sends(json.output)
-          .expects(201)
-          .end(done);
     });
   });
 
