@@ -77,17 +77,19 @@ describe('Appboy', function(){
         test.maps('track-basic');
       });
 
+      it('should set _update_existing_only to true if it is true in settings', function(){
+        settings.updateExistingOnly = true;
+        test.maps('track-update-existing-only');
+      });
+    });
+
+    describe('completedOrder', function(){
       it('should map complete order tracks with products', function(){
         test.maps('track-products');
       });
 
       it('should use default currency and quantity for products when they do not exist', function(){
         test.maps('track-products-defaults');
-      });
-
-      it('should set _update_existing_only to true if it is true in settings', function(){
-        settings.updateExistingOnly = true;
-        test.maps('track-update-existing-only');
       });
     });
 
@@ -126,7 +128,9 @@ describe('Appboy', function(){
         .expects(201)
         .end(done);
     });
+  });
 
+  describe('.completedOrder()', function(){
     it('should send track products', function(done){
       var json = test.fixture('track-products');
       var output = json.output;
