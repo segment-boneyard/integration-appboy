@@ -1,7 +1,6 @@
 # Appboy server-side integration.
 
-appboy server-side integration for Segment.
-
+Appboy server-side integration for Segment.
 
 ## License
 
