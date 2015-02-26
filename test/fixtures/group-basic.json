@@ -1,0 +1,22 @@
+{
+  "input": {
+    "type": "group",
+    "version": 1,
+    "userId": "group-user-id",
+    "groupId": "abcd123",
+    "traits": {
+      "avatar": "segment.jpg",
+      "name": "Segment",
+      "email": "friends@segment.io"
+    }
+  },
+  "output": {
+    "app_group_id": "08dde1d6-362b-44ae-9264-f63fb8a101bf",
+    "attributes": [{
+      "external_id": "group-user-id",
+      "ab_segment_group_abcd123": true,
+      "_update_existing_only": false
+    }],
+    "src": "segment"
+  }
+}
