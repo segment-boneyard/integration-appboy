@@ -2,7 +2,6 @@
 var Test = require('segmentio-integration-tester');
 var Appboy = require('../');
 var mapper = require('../lib/mapper');
-var facade = require('segmentio-facade');
 
 describe('Appboy', function(){
   var appboy;
@@ -11,7 +10,7 @@ describe('Appboy', function(){
 
   beforeEach(function(){
     settings = {
-      appGroupId: 'b1de6df9-0052-4f7a-87f5-a17273199311',
+      appGroupId: '08dde1d6-362b-44ae-9264-f63fb8a101bf',
       trackPages: true,
       updateExistingOnly: false
     };
