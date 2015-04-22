@@ -62,6 +62,10 @@ describe('Appboy', function(){
         test.maps('identify-gender');
       });
 
+      it('should send gender if it is of an accepted format', function(){
+        test.maps('identify-gender2');
+      });
+
       it('should preserve case of non-standard Appboy fields', function(){
         test.maps('identify-custom');
       });
