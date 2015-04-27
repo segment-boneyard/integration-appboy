@@ -1,6 +1,6 @@
 {
   "name": "integration-appboy",
-  "version": "0.0.1",
+  "version": "1.0.2",
   "private": true,
   "description": "Appboy server-side integration",
   "author": "Segment <friends@segment.com>",
@@ -13,7 +13,7 @@
     "test": "make test"
   },
   "dependencies": {
-    "segmentio-integration": "2.x"
+    "segmentio-integration": "3.x"
   },
   "devDependencies": {
     "istanbul": "0.x",

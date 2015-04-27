@@ -3,17 +3,12 @@
     "type": "identify",
     "version": "1",
     "timestamp": "2015-01-01T00:00:00.000Z",
-    "userId": "identify-user-id",
+    "userId": "identify-non-existing-user-id",
     "traits": {
       "firstName": "Jane",
       "lastName": "Doe",
       "email": "janedoe@example.com",
-      "gender": "F",
-      "avatar": "https://aws.com/1234",
-      "address": {
-        "country": "US",
-        "city": "New York"
-      }
+      "gender": "F"
     },
     "context": {
       "ip": "10.0.0.1"
@@ -22,15 +17,12 @@
   "output": {
     "app_group_id": "08dde1d6-362b-44ae-9264-f63fb8a101bf",
     "attributes": [{
-      "external_id": "identify-user-id",
+      "external_id": "identify-non-existing-user-id",
       "first_name": "Jane",
       "last_name": "Doe",
       "email": "janedoe@example.com",
       "gender": "F",
-      "image_url": "https://aws.com/1234",
-      "home_city": "New York",
-      "country": "US",
-      "_update_existing_only": false
+      "_update_existing_only": true
     }],
     "src": "segment"
   }

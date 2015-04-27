@@ -1,0 +1,23 @@
+{
+  "input": {
+    "type": "identify",
+    "version": "1",
+    "timestamp": "2015-01-01T00:00:00.000Z",
+    "userId": "identify-dob-user-id",
+    "traits": {
+      "birthday": "1991-09-26T10:00:00.001Z"
+    },
+    "context": {
+      "ip": "10.0.0.1"
+    }
+  },
+  "output": {
+    "app_group_id": "08dde1d6-362b-44ae-9264-f63fb8a101bf",
+    "attributes": [{
+      "external_id": "identify-dob-user-id",
+      "dob": "1991-09-26",
+      "_update_existing_only": false
+    }],
+    "src": "segment"
+  }
+}
