@@ -22,7 +22,7 @@ describe('Appboy', function(){
   it('should have the correct settings', function(){
     test
       .name('Appboy')
-      .channels(['server'])
+      .channels(['server', 'client'])
       .ensure('settings.appGroupId')
       .ensure('message.userId')
       .retries(2);
