@@ -65,6 +65,10 @@ describe('Appboy', function(){
         test.maps('identify-gender2');
       });
 
+      it('should omit gender if it is not a string', function(){
+        test.maps('identify-gender3');
+      });
+
       it('should preserve case of non-standard Appboy fields', function(){
         test.maps('identify-custom');
       });

@@ -1,0 +1,22 @@
+{
+  "input": {
+    "type": "identify",
+    "version": "1",
+    "timestamp": "2015-01-01T00:00:00.000Z",
+    "userId": "identify-gender-user-id",
+    "traits": {
+      "gender": { "type": "Female" }
+    },
+    "context": {
+      "ip": "10.0.0.1"
+    }
+  },
+  "output": {
+    "app_group_id": "08dde1d6-362b-44ae-9264-f63fb8a101bf",
+    "attributes": [{
+      "external_id": "identify-gender-user-id",
+      "_update_existing_only": false
+    }],
+    "src": "segment"
+  }
+}
