@@ -4,7 +4,7 @@
     "version": "2",
     "userId": "track-products-user-id",
     "timestamp": "2015-01-01T00:00:00.000Z",
-    "event": "Completed Order",
+    "event": "Order Completed",
     "properties": {
       "products": [
         {

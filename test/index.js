@@ -90,7 +90,7 @@ describe('Appboy', function(){
       });
     });
 
-    describe('completedOrder', function(){
+    describe('orderCompleted', function(){
       it('should map complete order tracks with products', function(){
         test.maps('track-products');
       });
@@ -137,7 +137,7 @@ describe('Appboy', function(){
     });
   });
 
-  describe('.completedOrder()', function(){
+  describe('.orderCompleted()', function(){
     it('should send track products', function(done){
       var json = test.fixture('track-products');
       var output = json.output;
