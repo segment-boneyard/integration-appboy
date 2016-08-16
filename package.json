@@ -13,14 +13,14 @@
     "test": "make test"
   },
   "dependencies": {
-    "segmentio-integration": "3.x"
+    "segmentio-integration": "4.x"
   },
   "devDependencies": {
     "istanbul": "0.x",
     "jscs": "1.x",
     "mocha": "2.x",
     "ms": "0.x",
-    "segmentio-integration-tester": "1.x",
+    "segmentio-integration-tester": "2.x",
     "should": "4.x",
     "unix-time": "1.x"
   }
