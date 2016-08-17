@@ -15,7 +15,7 @@
     }
   },
   "output": {
-    "app_group_id": "08dde1d6-362b-44ae-9264-f63fb8a101bf",
+    "app_group_id": "6bc2109a-770a-4ca3-8db7-775f1326f749",
     "attributes": [{
       "external_id": "identify-non-existing-user-id",
       "first_name": "Jane",
