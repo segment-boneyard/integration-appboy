@@ -1,4 +1,10 @@
 
+1.1.0 / 2016-08-17
+==================
+
+  * update a.js dependencies
+  * update ecommerce spec syntax to v2
+
 1.0.5 / 2016-03-07
 ==================
 
