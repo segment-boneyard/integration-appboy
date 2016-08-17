@@ -4,7 +4,7 @@
     "version": "2",
     "userId": "track-products-user-id",
     "timestamp": "2015-01-01T00:00:00.000Z",
-    "event": "Completed Order",
+    "event": "Order Completed",
     "properties": {
       "products": [
         {
@@ -28,7 +28,7 @@
     }
   },
   "output": {
-    "app_group_id": "08dde1d6-362b-44ae-9264-f63fb8a101bf",
+    "app_group_id": "6bc2109a-770a-4ca3-8db7-775f1326f749",
     "purchases": [
       {
         "external_id": "track-products-user-id",

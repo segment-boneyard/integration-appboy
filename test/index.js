@@ -10,7 +10,7 @@ describe('Appboy', function(){
 
   beforeEach(function(){
     settings = {
-      appGroupId: '08dde1d6-362b-44ae-9264-f63fb8a101bf',
+      appGroupId: '6bc2109a-770a-4ca3-8db7-775f1326f749',
       trackPages: true,
       updateExistingOnly: false
     };
@@ -90,7 +90,7 @@ describe('Appboy', function(){
       });
     });
 
-    describe('completedOrder', function(){
+    describe('orderCompleted', function(){
       it('should map complete order tracks with products', function(){
         test.maps('track-products');
       });
@@ -137,7 +137,7 @@ describe('Appboy', function(){
     });
   });
 
-  describe('.completedOrder()', function(){
+  describe('.orderCompleted()', function(){
     it('should send track products', function(done){
       var json = test.fixture('track-products');
       var output = json.output;
