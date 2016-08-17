@@ -1,4 +1,4 @@
-# Appboy server-side integration.
+# Appboy server-side integration. [![CircleCI](https://circleci.com/gh/segment-integrations/integration-appboy/tree/master.svg?style=svg)](https://circleci.com/gh/segment-integrations/integration-appboy/tree/master)
 
 Appboy server-side integration for Segment.
 
