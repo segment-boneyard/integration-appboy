@@ -12,7 +12,8 @@ describe('Appboy', function(){
     settings = {
       appGroupId: '6bc2109a-770a-4ca3-8db7-775f1326f749',
       trackPages: true,
-      updateExistingOnly: false
+      updateExistingOnly: false,
+      datacenter: 'us'
     };
     appboy = new Appboy(settings);
     test = Test(appboy, __dirname);
@@ -23,11 +24,12 @@ describe('Appboy', function(){
     test
       .name('Appboy')
       .channels(['server', 'client'])
+      .ensure('settings.datacenter')
       .ensure('settings.appGroupId')
       .ensure('message.userId')
       .retries(2);
   });
-//
+
   describe('.validate()', function(){
     it('should not be valid without an app group id', function(){
       delete settings.appGroupId;
@@ -37,6 +39,11 @@ describe('Appboy', function(){
     });
 
     it('should not be valid without a user id', function(){
+      test.invalid({}, settings);
+    });
+
+    it('should not be valid without a datacenter', function(){
+      delete settings.datacenter;
       test.invalid({}, settings);
     });
 
@@ -122,6 +129,18 @@ describe('Appboy', function(){
         .expects(201)
         .end(done);
     });
+
+    it('should send to eu datacenter', function(done){
+      var json = test.fixture('identify-basic');
+      var output = json.output;
+      settings.datacenter = 'eu';
+
+      test
+        .identify(json.input)
+        .sends(json.output)
+        .expects(201)
+        .end(done);
+    });
   });
 
   describe('.track()', function(){
@@ -129,6 +148,19 @@ describe('Appboy', function(){
       var json = test.fixture('track-basic');
       var output = json.output;
       output.events[0].time = new Date(output.events[0].time);
+      test
+        .track(json.input)
+        .sends(json.output)
+        .expects(201)
+        .end(done);
+    });
+
+    it('should send basic track to eu datacenter', function(done){
+      var json = test.fixture('track-basic');
+      var output = json.output;
+      output.events[0].time = new Date(output.events[0].time);
+      settings.datacenter = 'eu';
+
       test
         .track(json.input)
         .sends(json.output)
@@ -173,6 +205,18 @@ describe('Appboy', function(){
     it('should send basic group', function(done){
       var json = test.fixture('group-basic');
       var output = json.output;
+      test
+          .group(json.input)
+          .sends(json.output)
+          .expects(201)
+          .end(done);
+    });
+
+    it('should send basic group to eu datacenter', function(done){
+      var json = test.fixture('group-basic');
+      var output = json.output;
+      settings.datacenter = 'eu';
+
       test
           .group(json.input)
           .sends(json.output)
