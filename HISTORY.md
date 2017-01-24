@@ -1,4 +1,10 @@
 
+1.4.0 / 2017-01-24
+==================
+
+  * Update integration-worker base image to 3.17.0
+  * Update node runtime from 0.10.x to 6.9.2
+
 1.3.0 / 2016-12-21
 ==================
 
