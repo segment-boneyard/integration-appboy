@@ -31,7 +31,6 @@ test: install
 	@TZ=UTC $(MOCHA) $(TESTS) \
 		--grep "$(GREP)" \
 		--inline-diffs \
-		--require should \
 		--reporter spec \
 		--timeout 20000
 .PHONY: test
