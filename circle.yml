@@ -1,6 +1,6 @@
 machine:
   environment:
-    WORKER_VERSION: 3.17.0
+    WORKER_VERSION: 3.x
   node:
     version: 6.9.2
   services:
@@ -18,7 +18,7 @@ test:
     - make test
 
 deployment:
-  push:
-   branch: master
+  publish:
+    tag: /[0-9]+(\.[0-9]+)*(-.+)?/
    commands:
-    - curl -sLu "$HTTP_AUTH:" $BUILD | sh
+    - curl -sLu "$HTTP_AUTH:" https://raw.githubusercontent.com/segmentio/scripts/master/circle/docker/build.sh | sh
