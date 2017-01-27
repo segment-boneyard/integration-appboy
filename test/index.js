@@ -1,6 +1,7 @@
 
-var Test = require('segmentio-integration-tester');
 var Appboy = require('../');
+var Test = require('segmentio-integration-tester');
+var assert = require('assert');
 var mapper = require('../lib/mapper');
 
 describe('Appboy', function(){
@@ -194,8 +195,8 @@ describe('Appboy', function(){
         .end(function(err, response){
           if (err) return done(err);
           // check the the response was successful but has the minor error of invalid price
-          response[0].body.message.should.equal("success");
-          response[0].body.errors[0].type.should.match(/price/);
+          assert.strictEqual(response[0].body.message, "success");
+          assert((/price/).test(response[0].body.errors[0].type));
           done();
         });
     });
@@ -218,10 +219,10 @@ describe('Appboy', function(){
       settings.datacenter = 'eu';
 
       test
-          .group(json.input)
-          .sends(json.output)
-          .expects(201)
-          .end(done);
+        .group(json.input)
+        .sends(json.output)
+        .expects(201)
+        .end(done);
     });
   });
 });
