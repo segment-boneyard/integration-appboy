@@ -1,20 +1,20 @@
 {
-  "name": "integration-appboy",
+  "name": "@astronomerio/integration-appboy",
   "version": "1.5.0",
   "private": true,
   "description": "Appboy server-side integration",
   "author": "Segment <friends@segment.com>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/segmentio/integration-appboy"
+    "url": "https://github.com/astronomer-integrations/integration-appboy"
   },
   "main": "lib/index.js",
   "scripts": {
     "test": "make test"
   },
   "dependencies": {
-    "segmentio-facade": "^3.1.0",
-    "segmentio-integration": "^5.1.0"
+    "segmentio-facade": "3.1.0",
+    "segmentio-integration": "5.1.0"
   },
   "devDependencies": {
     "@segment/eslint-config": "^3.4.0",
