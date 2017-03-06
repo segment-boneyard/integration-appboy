@@ -1,7 +1,6 @@
 {
   "name": "@segment/integration-appboy",
   "version": "1.5.1",
-  
   "description": "Appboy server-side integration",
   "author": "Segment <friends@segment.com>",
   "repository": {
