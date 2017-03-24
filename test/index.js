@@ -3,6 +3,7 @@ var Appboy = require('../');
 var Test = require('segmentio-integration-tester');
 var assert = require('assert');
 var mapper = require('../lib/mapper');
+var Track = require('segmentio-facade').Track;
 
 describe('Appboy', function(){
   var appboy;
@@ -27,7 +28,6 @@ describe('Appboy', function(){
       .channels(['server', 'client'])
       .ensure('settings.datacenter')
       .ensure('settings.appGroupId')
-      .ensure('message.userId')
       .retries(2);
   });
 
@@ -39,8 +39,17 @@ describe('Appboy', function(){
       }, settings);
     });
 
-    it('should not be valid without a user id', function(){
+    it('should not be valid without a user id or anonymous id', function(){
       test.invalid({}, settings);
+    });
+
+    it('should be valid with either a user id or anonymous id', function () {
+      test.valid(new Track({
+        userId: "user-id"
+      }), settings);
+      test.valid(new Track({
+        anonymousId: "anonymous-id"
+      }), settings);
     });
 
     it('should not be valid without a datacenter', function(){
