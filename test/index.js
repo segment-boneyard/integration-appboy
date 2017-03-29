@@ -12,6 +12,7 @@ describe('Appboy', function(){
   beforeEach(function(){
     settings = {
       appGroupId: '6bc2109a-770a-4ca3-8db7-775f1326f749',
+      apiKey: 'my_api_key',
       trackPages: true,
       updateExistingOnly: false,
       datacenter: 'us'

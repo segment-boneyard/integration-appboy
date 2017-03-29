@@ -19,6 +19,7 @@
       {
         "external_id": "track-non-existing-user-id",
         "time": "2015-01-01T00:00:00.000Z",
+        "app_id": "my_api_key",
         "name": "played a song",
         "properties": {
           "song": "Frank AB",
