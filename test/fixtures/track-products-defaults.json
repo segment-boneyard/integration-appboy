@@ -32,6 +32,7 @@
     "purchases": [
       {
         "external_id": "track-products-user-id",
+        "app_id": "my_api_key",
         "product_id": "507f1f77bcf86cd799439011",
         "time": "2015-01-01T00:00:00.000Z",
         "price": 19,
@@ -41,6 +42,7 @@
       },
       {
         "external_id": "track-products-user-id",
+        "app_id": "my_api_key",
         "product_id": "505bd76785ebb509fc183733",
         "time": "2015-01-01T00:00:00.000Z",
         "price": 3,

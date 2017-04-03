@@ -18,7 +18,7 @@
     "events": [
       {
         "external_id": "track-user-id",
-        "app_id": "my_api_key",
+        "app_id": "",
         "time": "2015-01-01T00:00:00.000Z",
         "name": "played a song",
         "properties": {

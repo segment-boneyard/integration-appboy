@@ -2,7 +2,7 @@
   "input": {
     "type": "track",
     "version": "2",
-    "userId": "track-products-minor-error-user-id",
+    "userId": "track-products-user-id",
     "timestamp": "2015-01-01T00:00:00.000Z",
     "event": "Order Completed",
     "properties": {
@@ -19,7 +19,7 @@
           "id": "505bd76785ebb509fc183733",
           "sku": "46493-32",
           "name": "Uno Card Game",
-          "price": "xxx-error",
+          "price": 3,
           "quantity": 2,
           "category": "Games"
         }
@@ -34,8 +34,8 @@
     "app_group_id": "6bc2109a-770a-4ca3-8db7-775f1326f749",
     "purchases": [
       {
-        "external_id": "track-products-minor-error-user-id",
-        "app_id": "my_api_key",
+        "external_id": "track-products-user-id",
+        "app_id": "",
         "product_id": "507f1f77bcf86cd799439011",
         "time": "2015-01-01T00:00:00.000Z",
         "price": 19,
@@ -44,11 +44,11 @@
         "_update_existing_only": false
       },
       {
-        "external_id": "track-products-minor-error-user-id",
-        "app_id": "my_api_key",
+        "external_id": "track-products-user-id",
+        "app_id": "",
         "product_id": "505bd76785ebb509fc183733",
         "time": "2015-01-01T00:00:00.000Z",
-        "price": "xxx-error",
+        "price": 3,
         "quantity": 2,
         "currency": "USD",
         "_update_existing_only": false
