@@ -97,6 +97,11 @@ describe('Appboy', function(){
         settings.updateExistingOnly = true;
         test.maps('track-update-existing-only');
       });
+
+      it('should leave app_id blank when apiKey is not in settings', function(){
+        delete settings.apiKey;
+        test.maps('track-basic-no-api-key');
+      });
     });
 
     describe('orderCompleted', function(){
@@ -106,6 +111,11 @@ describe('Appboy', function(){
 
       it('should use default currency and quantity for products when they do not exist', function(){
         test.maps('track-products-defaults');
+      });
+
+      it('should leave app_id blank when apiKey is not in settings', function(){
+        delete settings.apiKey;
+        test.maps('track-basic-no-api-key');
       });
     });
 
