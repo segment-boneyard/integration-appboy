@@ -1,4 +1,9 @@
 
+1.5.0 / 2017-04-03
+==================
+
+  * Update the Appboy account credentials in test suites. 
+
 1.5.0 / 2017-01-31
 ==================
 
