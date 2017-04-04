@@ -11,7 +11,7 @@ describe('Appboy', function(){
 
   beforeEach(function(){
     settings = {
-      appGroupId: '6bc2109a-770a-4ca3-8db7-775f1326f749',
+      appGroupId: 'd54c3d18-71d5-4ebc-8a41-5cfae902977f',
       trackPages: true,
       updateExistingOnly: false,
       datacenter: 'us'
