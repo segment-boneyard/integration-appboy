@@ -12,6 +12,7 @@
           "sku": "45790-32",
           "name": "Monopoly: 3rd Edition",
           "price": 19,
+          "quantity": 1,
           "category": "Games"
         },
         {
@@ -19,9 +20,11 @@
           "sku": "46493-32",
           "name": "Uno Card Game",
           "price": 3,
+          "quantity": 2,
           "category": "Games"
         }
-      ]
+      ],
+      "currency": "USD"
     },
     "context": {
       "ip": "10.0.0.1"
@@ -32,7 +35,7 @@
     "purchases": [
       {
         "external_id": "track-products-user-id",
-        "app_id": "my_api_key",
+        "app_id": "",
         "product_id": "507f1f77bcf86cd799439011",
         "time": "2015-01-01T00:00:00.000Z",
         "price": 19,
@@ -42,11 +45,11 @@
       },
       {
         "external_id": "track-products-user-id",
-        "app_id": "my_api_key",
+        "app_id": "",
         "product_id": "505bd76785ebb509fc183733",
         "time": "2015-01-01T00:00:00.000Z",
         "price": 3,
-        "quantity": 1,
+        "quantity": 2,
         "currency": "USD",
         "_update_existing_only": false
       }

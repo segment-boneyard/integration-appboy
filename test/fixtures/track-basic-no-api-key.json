@@ -2,7 +2,7 @@
   "input": {
     "type": "track",
     "version": "2",
-    "userId": "track-non-existing-user-id",
+    "userId": "track-user-id",
     "timestamp": "2015-01-01T00:00:00.000Z",
     "event": "played a song",
     "properties": {
@@ -17,15 +17,15 @@
     "app_group_id": "d54c3d18-71d5-4ebc-8a41-5cfae902977f",
     "events": [
       {
-        "external_id": "track-non-existing-user-id",
+        "external_id": "track-user-id",
+        "app_id": "",
         "time": "2015-01-01T00:00:00.000Z",
-        "app_id": "my_api_key",
         "name": "played a song",
         "properties": {
           "song": "Frank AB",
           "artist": "Rural Alberta Advantage"
         },
-        "_update_existing_only": true
+        "_update_existing_only": false
       }
     ],
     "src": "segment"

@@ -12,6 +12,7 @@ describe('Appboy', function(){
   beforeEach(function(){
     settings = {
       appGroupId: 'd54c3d18-71d5-4ebc-8a41-5cfae902977f',
+      apiKey: 'my_api_key',
       trackPages: true,
       updateExistingOnly: false,
       datacenter: 'us'
@@ -96,6 +97,11 @@ describe('Appboy', function(){
         settings.updateExistingOnly = true;
         test.maps('track-update-existing-only');
       });
+
+      it('should leave app_id blank when apiKey is not in settings', function(){
+        delete settings.apiKey;
+        test.maps('track-basic-no-api-key');
+      });
     });
 
     describe('orderCompleted', function(){
@@ -105,6 +111,11 @@ describe('Appboy', function(){
 
       it('should use default currency and quantity for products when they do not exist', function(){
         test.maps('track-products-defaults');
+      });
+
+      it('should leave app_id blank when apiKey is not in settings', function(){
+        delete settings.apiKey;
+        test.maps('track-basic-no-api-key');
       });
     });
 
