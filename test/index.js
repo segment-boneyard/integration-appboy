@@ -25,7 +25,7 @@ describe('Appboy', function(){
   it('should have the correct settings', function(){
     test
       .name('Appboy')
-      .channels(['server', 'client'])
+      .channels(['server'])
       .ensure('settings.datacenter')
       .ensure('settings.appGroupId')
       .ensure('message.userId')

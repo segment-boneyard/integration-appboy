@@ -1,4 +1,10 @@
 
+1.6.2 / 2017-04-28
+==================
+
+  * Remove client from channels since analytics is built out
+    on the client side and connection mode option is in the UI
+
 1.6.1 / 2017-04-17
 ==================
 
