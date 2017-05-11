@@ -67,6 +67,17 @@ describe('Appboy', function(){
       var msg = { type: 'page', userId: 'userId'};
       test.invalid(msg, settings);
     });
+
+    it('should reject `.screen()` calls if all page call options are false', function() {
+      var msg = { type: 'screen', userId: 'userId'};
+      test.invalid(msg, settings);
+    });
+
+    it('should reject `.screen()` calls if no name is passed and trackNamedPages is true', function() {
+      appboy.settings.trackNamedPages = true;
+      var msg = { type: 'screen', userId: 'userId'};
+      test.invalid(msg, settings);
+    });
   });
 
   describe('mapper', function(){
@@ -156,6 +167,22 @@ describe('Appboy', function(){
       it('should leave app_id blank when apiKey is not in settings', function() {
         delete settings.apiKey;
         test.maps('page-basic-no-api-key');
+      });
+    });
+
+    describe('screen', function() {
+      it('should map basic screen', function() {
+        test.maps('screen-basic');
+      });
+
+      it('should set _update_existing_only to true if it is true in settings', function() {
+        settings.updateExistingOnly = true;
+        test.maps('screen-update-existing-only');
+      });
+
+      it('should leave app_id blank when apiKey is not in settings', function() {
+        delete settings.apiKey;
+        test.maps('screen-basic-no-api-key');
       });
     });
   });
@@ -284,6 +311,30 @@ describe('Appboy', function(){
 
       test
         .page(json.input)
+        .sends(json.output)
+        .expects(201)
+        .end(done);
+    });
+  });
+
+  describe('.screen()', function() {
+    it('should send basic screen', function(done) {
+      var json = test.fixture('screen-basic');
+      json.output.events[0].time = new Date(json.output.events[0].time);
+      test
+        .screen(json.input)
+        .sends(json.output)
+        .expects(201)
+        .end(done);
+    });
+
+    it('should send basic screen to eu datacenter', function(done) {
+      var json = test.fixture('screen-basic');
+      json.output.events[0].time = new Date(json.output.events[0].time);
+      settings.datacenter = 'eu';
+
+      test
+        .screen(json.input)
         .sends(json.output)
         .expects(201)
         .end(done);
