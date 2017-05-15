@@ -1,4 +1,9 @@
 
+1.7.0 / 2017-05-15
+==================
+
+  * Add support for page and screen calls
+
 1.6.2 / 2017-04-28
 ==================
 
@@ -14,11 +19,11 @@
 ==================
 
   * Add support for passing AppId/ApiKey as request parameters of server-side events
-  
+
 1.5.3 / 2017-04-03
 ==================
 
-  * Update the Appboy account credentials in test suites. 
+  * Update the Appboy account credentials in test suites.
 
 1.5.0 / 2017-01-31
 ==================
@@ -36,7 +41,7 @@ segmentio-integration version, upgrade integration-worker version, etc.)
 1.3.0 / 2016-12-21
 ==================
 
-  * Support datacenter setting 
+  * Support datacenter setting
 
 1.2.0 / 2016-09-06
 ==================
