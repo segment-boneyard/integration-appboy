@@ -15,7 +15,9 @@ describe('Appboy', function(){
       apiKey: 'my_api_key',
       trackPages: true,
       updateExistingOnly: false,
-      datacenter: 'us'
+      datacenter: 'us',
+      trackAllPages: false,
+      trackNamedPages: false
     };
     appboy = new Appboy(settings);
     test = Test(appboy, __dirname);
@@ -53,6 +55,28 @@ describe('Appboy', function(){
       test.valid({
         userId: "user-id"
       }, settings);
+    });
+
+    it('should reject `.page()` calls if all page call options are false', function() {
+      var msg = { type: 'page', userId: 'userId'};
+      test.invalid(msg, settings);
+    });
+
+    it('should reject `.page()` calls if no name is passed and trackNamedPages is true', function() {
+      appboy.settings.trackNamedPages = true;
+      var msg = { type: 'page', userId: 'userId'};
+      test.invalid(msg, settings);
+    });
+
+    it('should reject `.screen()` calls if all page call options are false', function() {
+      var msg = { type: 'screen', userId: 'userId'};
+      test.invalid(msg, settings);
+    });
+
+    it('should reject `.screen()` calls if no name is passed and trackNamedPages is true', function() {
+      appboy.settings.trackNamedPages = true;
+      var msg = { type: 'screen', userId: 'userId'};
+      test.invalid(msg, settings);
     });
   });
 
@@ -127,6 +151,38 @@ describe('Appboy', function(){
       it('should set _update_existing_only to true if it is true in settings', function(){
         settings.updateExistingOnly = true;
         test.maps('group-update-existing-only');
+      });
+    });
+
+    describe('page', function() {
+      it('should map basic page', function() {
+        test.maps('page-basic');
+      });
+
+      it('should set _update_existing_only to true if it is true in settings', function() {
+        settings.updateExistingOnly = true;
+        test.maps('page-update-existing-only');
+      });
+
+      it('should leave app_id blank when apiKey is not in settings', function() {
+        delete settings.apiKey;
+        test.maps('page-basic-no-api-key');
+      });
+    });
+
+    describe('screen', function() {
+      it('should map basic screen', function() {
+        test.maps('screen-basic');
+      });
+
+      it('should set _update_existing_only to true if it is true in settings', function() {
+        settings.updateExistingOnly = true;
+        test.maps('screen-update-existing-only');
+      });
+
+      it('should leave app_id blank when apiKey is not in settings', function() {
+        delete settings.apiKey;
+        test.maps('screen-basic-no-api-key');
       });
     });
   });
@@ -231,6 +287,54 @@ describe('Appboy', function(){
 
       test
         .group(json.input)
+        .sends(json.output)
+        .expects(201)
+        .end(done);
+    });
+  });
+
+  describe('.page()', function() {
+    it('should send basic page', function(done) {
+      var json = test.fixture('page-basic');
+      json.output.events[0].time = new Date(json.output.events[0].time);
+      test
+        .page(json.input)
+        .sends(json.output)
+        .expects(201)
+        .end(done);
+    });
+
+    it('should send basic page to eu datacenter', function(done) {
+      var json = test.fixture('page-basic');
+      json.output.events[0].time = new Date(json.output.events[0].time);
+      settings.datacenter = 'eu';
+
+      test
+        .page(json.input)
+        .sends(json.output)
+        .expects(201)
+        .end(done);
+    });
+  });
+
+  describe('.screen()', function() {
+    it('should send basic screen', function(done) {
+      var json = test.fixture('screen-basic');
+      json.output.events[0].time = new Date(json.output.events[0].time);
+      test
+        .screen(json.input)
+        .sends(json.output)
+        .expects(201)
+        .end(done);
+    });
+
+    it('should send basic screen to eu datacenter', function(done) {
+      var json = test.fixture('screen-basic');
+      json.output.events[0].time = new Date(json.output.events[0].time);
+      settings.datacenter = 'eu';
+
+      test
+        .screen(json.input)
         .sends(json.output)
         .expects(201)
         .end(done);

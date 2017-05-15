@@ -1,0 +1,38 @@
+{
+  "input": {
+    "anonymousId": "507f191e810c19729de860ea",
+    "channel": "mobile",
+    "context": {
+      "ip": "8.8.8.8"
+    },
+    "integrations": {},
+    "messageId": "022bb90c-bbac-11e4-8dfc-aa07a5b093db",
+    "name": "Home",
+    "properties": {
+      "variation": "blue signup button"
+    },
+    "receivedAt": "2015-02-23T22:28:55.387Z",
+    "sentAt": "2015-02-23T22:28:55.111Z",
+    "timestamp": "2015-01-01T00:00:00.000Z",
+    "type": "screen",
+    "userId": "97980cfea0067",
+    "version": "1.1"
+  },
+  "output": {
+    "app_group_id": "d54c3d18-71d5-4ebc-8a41-5cfae902977f",
+    "events": [
+      {
+        "external_id": "97980cfea0067",
+        "app_id": "my_api_key",
+        "time": "2015-01-01T00:00:00.000Z",
+        "name": "Viewed Home Screen",
+        "properties": {
+          "name": "Home",
+          "variation": "blue signup button"
+        },
+        "_update_existing_only": false
+      }
+    ],
+    "src": "segment"
+  }
+}
