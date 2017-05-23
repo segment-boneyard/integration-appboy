@@ -3,11 +3,19 @@ var Appboy = require('../');
 var Test = require('segmentio-integration-tester');
 var assert = require('assert');
 var mapper = require('../lib/mapper');
+var redis = require('redis');
 
-describe('Appboy', function(){
+describe('Appboy', function() {
   var appboy;
   var settings;
   var test;
+  var db;
+
+  before(function(done) {
+    db = redis.createClient();
+    db.on('ready', done);
+    db.on('error', done);
+  });
 
   beforeEach(function(){
     settings = {
@@ -22,6 +30,7 @@ describe('Appboy', function(){
     appboy = new Appboy(settings);
     test = Test(appboy, __dirname);
     test.mapper(mapper);
+    appboy.redis(db);
   });
 
   it('should have the correct settings', function(){
@@ -339,5 +348,96 @@ describe('Appboy', function(){
         .expects(201)
         .end(done);
     });
+  });
+
+  describe('.setLimit()', function() {
+    it('should set limit succefully', function(done) {
+      var appId = '140286';
+      var key = ['appboy', appId].join(':');
+      appboy.settings.apiKey = appId;
+
+      var remaining = Math.floor((Math.random() * 1000) + 1);
+      var reset = (Date.now() + (1000 * 60 * 5)) / 1000;
+      var headers = {
+        'x-ratelimit-remaining': remaining,
+        'x-ratelimit-reset': reset
+      };
+
+      appboy.setLimit(headers, function() {
+        db.get(key, function(err, res) {
+          assert.deepEqual(err, null);
+
+          limit = JSON.parse(res);
+          assert.deepEqual(limit.remaining, remaining);
+          assert.deepEqual(limit.reset, reset);
+          done();
+        });
+      });
+    });
+  });
+
+  describe('.limit()', function() {
+    it('req is called when there is no limit in redis', function(done) {
+      var appId = '300888';
+      appboy.settings.apiKey = appId;
+
+      req = function() {
+        done();
+      };
+
+      appboy.limit(req, null);
+    });
+
+    it('req is called when there is remaining', function(done) {
+      var appId = '201187';
+      appboy.settings.apiKey = appId;
+
+      var remaining = 42;
+      var headers = {'x-ratelimit-remaining': remaining};
+
+      appboy.setLimit(headers, function() {
+        req = function() {
+          done();
+        };
+        appboy.limit(req, null);
+      });
+    });
+
+    it('req is called when reset is passed', function(done) {
+      var appId = '201189';
+      appboy.settings.apiKey = appId;
+
+      var remaining = 0;
+      var headers = {
+        'x-ratelimit-remaining': remaining,
+        'x-ratelimit-reset': Date.now() / 1000
+      };
+
+      appboy.setLimit(headers, function() {
+        req = function() {
+          done();
+        };
+        appboy.limit(req, null);
+      });
+    });
+
+    it('req is not called when remaining is 0 and reset is not passed',
+       function(done) {
+         var appId = '201187';
+         appboy.settings.apiKey = appId;
+
+         var remaining = 0;
+         var headers = {
+           'x-ratelimit-remaining': remaining,
+           'x-ratelimit-reset': (Date.now() + (1000 * 60 * 60 * 24)) / 1000
+         };
+
+         appboy.setLimit(headers, function() {
+           var fn = function() {
+             done();
+           };
+           appboy.limit(null, fn);
+         });
+       });
   });
 });
