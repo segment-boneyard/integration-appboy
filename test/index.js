@@ -31,6 +31,7 @@ describe('Appboy', function() {
     test = Test(appboy, __dirname);
     test.mapper(mapper);
     appboy.redis(db);
+    db.flushall();
   });
 
   it('should have the correct settings', function(){
@@ -380,12 +381,7 @@ describe('Appboy', function() {
     it('req is called when there is no limit in redis', function(done) {
       var appId = '300888';
       appboy.settings.apiKey = appId;
-
-      req = function() {
-        done();
-      };
-
-      appboy.limit(req, null);
+      appboy.limit(done, done);
     });
 
     it('req is called when there is remaining', function(done) {
@@ -396,10 +392,7 @@ describe('Appboy', function() {
       var headers = {'x-ratelimit-remaining': remaining};
 
       appboy.setLimit(headers, function() {
-        req = function() {
-          done();
-        };
-        appboy.limit(req, null);
+        appboy.limit(done, done);
       });
     });
 
@@ -414,10 +407,7 @@ describe('Appboy', function() {
       };
 
       appboy.setLimit(headers, function() {
-        req = function() {
-          done();
-        };
-        appboy.limit(req, null);
+        appboy.limit(done, done);
       });
     });
 
@@ -433,10 +423,16 @@ describe('Appboy', function() {
          };
 
          appboy.setLimit(headers, function() {
+           var req = function() {
+             err = new Error('should not be called');
+             done(err);
+           };
+
            var fn = function() {
              done();
            };
-           appboy.limit(null, fn);
+
+           appboy.limit(req, fn);
          });
        });
   });
