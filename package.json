@@ -25,6 +25,7 @@
     "jscs": "1.x",
     "mocha": "2.x",
     "ms": "0.x",
+    "redis": "^2.7.1",
     "segmentio-integration-tester": "^2.x",
     "unix-time": "1.x"
   }
